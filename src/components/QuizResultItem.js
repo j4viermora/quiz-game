@@ -7,14 +7,14 @@ export default function QuizResultItem({ question, isCorrect }) {
         <>
             {isCorrect ? (
                 <div className="is-flex">
-                    <span className="icon">
+                    <span className="icon mr-1">
                         <AiFillCheckCircle color={colors.primary} />
                     </span>
-                    <p>{question}</p>
+                    <p>{question.trim()}</p>
                 </div>
             ) : (
                 <div className="is-flex">
-                    <span className="icon">
+                    <span className="icon mr-1">
                         <AiFillCloseCircle color={colors.danger} />
                     </span>
                     <p>{question}</p>

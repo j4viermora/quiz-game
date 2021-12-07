@@ -1,4 +1,5 @@
 import axios from "axios";
+import { TYPES } from "constants/types";
 import { loaded, setLoading } from "./ui";
 
 export const getQuizzes = () => {
@@ -9,7 +10,7 @@ export const getQuizzes = () => {
                 "https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean"
             );
 
-            dispatch(setQuiz(data.results));
+            dispatch(setQuizzes(data.results));
             dispatch(loaded());
         } catch (error) {
             console.log(error);
@@ -54,25 +55,29 @@ const nextStepHandler = (dispatch) => {
 };
 
 const setNextStep = () => ({
-    type: "SET_NEXT_STEP",
+    type: TYPES.setNextStep,
 });
 
 const setCorrectAnswer = (data) => ({
-    type: "SET_CORRECT_ANSWER",
+    type: TYPES.setCorrectAnswer,
     payload: data,
 });
 
 const setAnswer = (data) => ({
-    type: "SET_ANSWER",
+    type: TYPES.setAnswer,
     payload: data,
 });
 
 export const setCurrentQuiz = (quiz) => ({
-    type: "SET_CURRENT_QUIZ",
+    type: TYPES.setCurrentQuiz,
     payload: quiz,
 });
 
-const setQuiz = (data) => ({
-    type: "GET_QUIZZES",
+const setQuizzes = (data) => ({
+    type: TYPES.getQuizzes,
     payload: data,
+});
+
+export const setEndTime = () => ({
+    type: TYPES.setEndTime,
 });

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet";
 
 // Personal imports
 
@@ -9,11 +10,15 @@ import { PATHS } from "router/routes";
 import Section from "layout/Section";
 import Welcome from "components/Welcome";
 import FormName from "components/FormName";
-import { Helmet } from "react-helmet";
 
 export function HomePage() {
     const navigate = useNavigate();
-    const { currentStep } = useSelector((state) => state.QUIZ);
+    const {
+        QUIZ: { currentStep },
+        USER: {
+            user: { name },
+        },
+    } = useSelector((state) => state);
 
     useEffect(() => {
         if (currentStep >= 10) {
@@ -24,12 +29,21 @@ export function HomePage() {
     return (
         <>
             <Helmet>
-                <title>Welcome</title>
+                <title>Welcome to quiz</title>
             </Helmet>
             <Section>
                 <Container className="p-6">
                     <Welcome />
-                    <FormName />
+                    {!name ? (
+                        <FormName />
+                    ) : (
+                        <button
+                            className="button is-link"
+                            onClick={() => navigate(PATHS.QUIZ)}
+                        >
+                            Start
+                        </button>
+                    )}
                 </Container>
             </Section>
         </>

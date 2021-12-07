@@ -1,6 +1,6 @@
 # Quiz Game
 
-Simple game
+Simple quiz game you can see online this project [quiz-game-chi-vercel.app]("https://quiz-game-chi.vercel.app/")
 
 ## help improve it
 
@@ -15,4 +15,3 @@ This project is built with
 -   Redux
 -   Axios
 -   Bulma Css
-# quiz-game

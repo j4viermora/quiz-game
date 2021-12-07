@@ -3,7 +3,7 @@ import voting from "assets/images/voting.png";
 import election from "assets/images/election.png";
 import selectOption from "assets/images/select_options.png";
 import { useDispatch } from "react-redux";
-import { setMyAnswer } from "actions/quiz";
+import { setEndTime, setMyAnswer } from "actions/quiz";
 import { useNavigate } from "react-router";
 import { PATHS } from "router/routes";
 
@@ -13,6 +13,7 @@ export default function QuizContent({
     difficulty,
     currentStep,
     totalSteps,
+    loading,
 }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default function QuizContent({
         dispatch(setMyAnswer(response));
         if (currentStep === totalSteps) {
             navigate(PATHS.QUIZ_RESULT);
+            dispatch(setEndTime());
         }
         if (currentStep >= 3) {
             setIllustration(election);
@@ -44,6 +46,7 @@ export default function QuizContent({
                 <div className="my-5 is-flex is-justify-content-center">
                     <button
                         className="button is-link"
+                        disabled={loading}
                         onClick={() => handleClick(true)}
                     >
                         Yes
@@ -51,6 +54,7 @@ export default function QuizContent({
                     <span className="mx-1" />
                     <button
                         className="button is-danger"
+                        disabled={loading}
                         onClick={() => handleClick(false)}
                     >
                         No

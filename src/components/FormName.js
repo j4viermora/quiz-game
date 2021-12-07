@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 
 import { useForm } from "hooks/useForm";
 import { PATHS } from "router/routes";
+import { setUser } from "actions/user";
 
 export default function FormName() {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function FormName() {
         e.preventDefault();
         window.localStorage.setItem("name", form.name);
         navigate(PATHS.QUIZ);
-        dispatch({ type: "SET_USER", payload: form });
+        dispatch(setUser(form));
     };
 
     return (

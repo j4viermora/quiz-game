@@ -2,3 +2,9 @@
     max-width: 680px;
     min-width: 360px;
 }
+
+.view_more {
+    text-decoration: underline;
+    color: #485fc7;
+    cursor: pointer;
+}
