@@ -1,6 +1,6 @@
 import React from "react";
 import question from "assets/images/question.png";
-import styles from "styles/custom.module.css";
+import styles from "styles/Custom.module.css";
 import { useDispatch } from "react-redux";
 import { isModalOpen } from "actions/ui";
 
