@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Personal Imports
 
@@ -20,13 +19,8 @@ export function QuizResult() {
     const correctAnswers = myAnswers.filter(
         (answer) => answer.isCorrect === true
     ).length;
-    const navigate = useNavigate();
     const isApprove = correctAnswers > 5;
     const totalTime = getTotalTime(endTime, startTime);
-
-    useEffect(() => {
-        myAnswers.length === totalSteps && navigate(PATHS.HOME);
-    }, [myAnswers, totalSteps, navigate]);
 
     return (
         <>
