@@ -10,6 +10,7 @@ import { PATHS } from "router/routes";
 import Section from "layout/Section";
 import Welcome from "components/Welcome";
 import FormName from "components/FormName";
+import SelectDifficultty from "components/SelectDifficultty";
 
 export function HomePage() {
     const navigate = useNavigate();
@@ -34,6 +35,7 @@ export function HomePage() {
             <Section>
                 <Container className="p-6">
                     <Welcome />
+                    <SelectDifficultty className="mr-3" />
                     {!name ? (
                         <FormName />
                     ) : (

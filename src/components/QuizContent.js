@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import ReactHtmlParser from "react-html-parser";
+
+// personal imports
+import selectOption from "assets/images/select_options.png";
 import voting from "assets/images/voting.png";
 import election from "assets/images/election.png";
-import selectOption from "assets/images/select_options.png";
-import { useDispatch } from "react-redux";
 import { setEndTime, setMyAnswer } from "actions/quiz";
-import { useNavigate } from "react-router";
 import { PATHS } from "router/routes";
 
 export default function QuizContent({
@@ -36,13 +39,27 @@ export default function QuizContent({
         <div className="p-5">
             <h2 className="has-text-weight-bold is-size-4 mb-3 is-flex is-align-items-center">
                 {category}
-                <span className="tag is-warning ml-3">{difficulty}</span>
+                {difficulty === "easy" && (
+                    <span className="tag is-primary ml-3">
+                        {difficulty.toLocaleUpperCase()}
+                    </span>
+                )}
+                {difficulty === "medium" && (
+                    <span className="tag is-warning ml-3">
+                        {difficulty.toLocaleUpperCase()}
+                    </span>
+                )}
+                {difficulty === "hard" && (
+                    <span className="tag is-danger ml-3">
+                        {difficulty.toLocaleUpperCase()}
+                    </span>
+                )}
             </h2>
             <figure className="image">
                 <img src={illustration} alt="voting" />
             </figure>
-            <p className="has-text-centered">{question}</p>
-            {currentStep <= 10 && (
+            <p>{ReactHtmlParser(question)}</p>
+            {currentStep <= totalSteps && (
                 <div className="my-5 is-flex is-justify-content-center">
                     <button
                         className="button is-link"
