@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillCloseCircle, AiFillCheckCircle } from "react-icons/ai";
 import { colors } from "styles/theme";
+import htmlparse from "react-html-parser";
 
 export default function QuizResultItem({ question, isCorrect }) {
     return (
@@ -10,7 +11,7 @@ export default function QuizResultItem({ question, isCorrect }) {
                     <span className="icon mr-1">
                         <AiFillCheckCircle color={colors.primary} />
                     </span>
-                    <p>{question.trim()}</p>
+                    <p>{htmlparse(question.trim())}</p>
                 </div>
             ) : (
                 <div className="is-flex">

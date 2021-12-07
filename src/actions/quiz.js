@@ -2,13 +2,14 @@ import axios from "axios";
 import { TYPES } from "constants/types";
 import { loaded, setLoading } from "./ui";
 
-export const getQuizzes = (difficultty = "easy") => {
-    return async (dispatch) => {
+export const getQuizzes = () => {
+    return async (dispatch, getState) => {
+        const { difficulty } = getState().QUIZ;
         const limit = 11;
         dispatch(setLoading());
         try {
             const { data } = await axios.get(
-                `https://opentdb.com/api.php?amount=${limit}&difficulty=${difficultty}&type=boolean`
+                `https://opentdb.com/api.php?amount=${limit}&difficulty=${difficulty}&type=boolean`
             );
 
             dispatch(setQuizzes(data.results));
@@ -81,4 +82,9 @@ const setQuizzes = (data) => ({
 
 export const setEndTime = () => ({
     type: TYPES.setEndTime,
+});
+
+export const setDifficulty = (difficultty) => ({
+    type: TYPES.setDifficulty,
+    payload: difficultty,
 });

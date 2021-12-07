@@ -1,4 +1,4 @@
-import { getQuizzes } from "actions/quiz";
+import { setDifficulty } from "actions/quiz";
 import { useDispatch } from "react-redux";
 
 export default function SelectDifficultty({ className }) {
@@ -7,7 +7,7 @@ export default function SelectDifficultty({ className }) {
     return (
         <div
             className={`select ${className} `}
-            onChange={(e) => dispatch(getQuizzes(e.target.value))}
+            onChange={(e) => dispatch(setDifficulty(e.target.value))}
         >
             <select>
                 <option value="easy">Easy</option>

@@ -11,6 +11,7 @@ const initialState = {
     loading: false,
     startTime: null,
     endTime: null,
+    difficulty: "easy",
 };
 
 export const quizReducer = (state = initialState, action) => {
@@ -60,6 +61,11 @@ export const quizReducer = (state = initialState, action) => {
             return {
                 ...state,
                 endTime: new Date().getTime(),
+            };
+        case TYPES.setDifficulty:
+            return {
+                ...state,
+                difficulty: action.payload,
             };
         default:
             return state;

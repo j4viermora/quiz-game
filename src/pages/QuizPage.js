@@ -1,19 +1,25 @@
 import Container from "layout/Container";
-import React from "react";
+import { useEffect } from "react";
 
 // Personal Imports
 
 import QuizContent from "components/QuizContent";
 import Section from "layout/Section";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FeedBackResult from "components/FeedBackResult";
 import { Helmet } from "react-helmet";
 import Loader from "components/Loader";
+import { getQuizzes } from "actions/quiz";
 
 export function QuizPage() {
     const { isLoading } = useSelector((state) => state.UI);
     const { quizzes, currentStep, totalSteps, success, answered, loading } =
         useSelector((state) => state.QUIZ);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getQuizzes());
+    }, [dispatch]);
 
     return (
         <>

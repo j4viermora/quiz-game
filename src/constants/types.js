@@ -14,6 +14,7 @@ export const TYPES = {
     setAnswer: "@QUIZ SET_ANSWER",
     setNextStep: "@QUIZ SET_NEXT_STEP",
     setEndTime: "@QUIZ SET_END_TIME",
+    setDifficulty: "@QUIZ SET_DIFFICULTY",
 
     // USER
     setUser: "@USER SET_USER",
