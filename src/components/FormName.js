@@ -26,11 +26,11 @@ export default function FormName() {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className="">
+                <div>
                     <input
                         type="text"
                         placeholder="Enter your name, please"
-                        className="input mb-5"
+                        className="input mb-3"
                         value={name}
                         onChange={handleChange}
                         name="name"

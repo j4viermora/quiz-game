@@ -16,7 +16,10 @@ export default function SelectDifficultty({ className }) {
     };
 
     return (
-        <div className={`select ${className} `} onChange={handleChange}>
+        <div
+            className={`select ${className} is-fullwidth mb-3`}
+            onChange={handleChange}
+        >
             <select>
                 <option value="no-selected">Select Difficulty</option>
                 {options.map(({ value, display }) => (

@@ -40,7 +40,7 @@ export function HomePage() {
                         <FormName />
                     ) : (
                         <button
-                            className="button is-link"
+                            className="button is-link is-fullwidth"
                             onClick={() => navigate(PATHS.QUIZ)}
                         >
                             Start
